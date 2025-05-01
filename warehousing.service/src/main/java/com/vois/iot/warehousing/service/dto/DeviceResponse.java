@@ -11,6 +11,13 @@ public class DeviceResponse {
 
     private Double temperature;
 
+    public DeviceResponse(UUID sampleId, String number, DeviceStatus deviceStatus, int i) {
+    }
+
+    public DeviceResponse() {
+
+    }
+
     public UUID getId() {
         return id;
     }
