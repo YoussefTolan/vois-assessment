@@ -20,8 +20,8 @@ Everything is wired up via Docker Compose.
 
 1. **Clone the repo**
    
-   git clone https://github.com/YoussefTolan/iot-vois-repo.git
-   cd iot-monorepo
+   git clone https://github.com/YoussefTolan/vois-assessment.git
+   
 
 2. **Build and run docker compose file**
 
