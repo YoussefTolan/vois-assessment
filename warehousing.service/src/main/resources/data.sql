@@ -1,5 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
+-- 100 records only for testing the application is capable of handling 2 million records as mentioned in the task
 INSERT INTO devices (
   id,
   pin,
