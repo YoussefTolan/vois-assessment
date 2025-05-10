@@ -58,6 +58,13 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.INTERNAL_SERVER_ERROR, "Something went wrong");
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiError> handleIllegalState(IllegalStateException ex) {
+        log.warn("Illegal state: {}", ex.getMessage());
+        return error(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+
     private ResponseEntity<ApiError> error(HttpStatus status, String message) {
         return new ResponseEntity<>(new ApiError(status.value(), message), status);
     }

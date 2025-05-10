@@ -48,7 +48,7 @@ class DeviceControllerTest {
                 sampleId,
                 "0123456",
                 DeviceStatus.READY,
-                -1
+                -1.0
         );
         sampleRequest = new DeviceRequest();
         sampleRequest.setPin("0123456");
@@ -125,6 +125,25 @@ class DeviceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("ACTIVE"))
                 .andExpect(jsonPath("$.temperature").value(5));
+    }
+
+    @Test
+    @DisplayName("GET /api/devices?saleable=true → 200 OK paginated list")
+    void listSaleableDevices() throws Exception {
+        List<DeviceResponse> list = Collections.singletonList(sampleResponse);
+        Page<DeviceResponse> page = new PageImpl<>(list, PageRequest.of(0, 10), 1);
+
+        given(service.listSaleable(PageRequest.of(0, 10))).willReturn(page);
+
+        mockMvc.perform(get("/api/devices")
+                        .param("saleable", "true")
+                        .param("page", "0")
+                        .param("size", "10"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data[0].id").value(sampleId.toString()))
+                .andExpect(jsonPath("$.total").value(1))
+                .andExpect(jsonPath("$.page").value(0))
+                .andExpect(jsonPath("$.pageSize").value(10));
     }
 
     @Test

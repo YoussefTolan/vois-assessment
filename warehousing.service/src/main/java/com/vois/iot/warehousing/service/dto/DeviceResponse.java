@@ -1,55 +1,29 @@
 package com.vois.iot.warehousing.service.dto;
 
 import com.vois.iot.warehousing.service.model.Enums.DeviceStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
+@Setter
+@Getter
 public class DeviceResponse {
     private UUID id;
     private String pin;
     private DeviceStatus status;
-
     private Double temperature;
 
-    public DeviceResponse(UUID sampleId, String number, DeviceStatus deviceStatus, int i) {
+
+    // this constructor is for testing purpose
+    public DeviceResponse(UUID sampleId, String number, DeviceStatus deviceStatus, double i) {
+    this.id = sampleId;
+    this.pin = number;
+    this.status = deviceStatus;
+    this.temperature = i;
     }
 
+    // this construct acts as the default constructor
     public DeviceResponse() {
-
     }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getPin() {
-        return pin;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
-    }
-
-    public DeviceStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(DeviceStatus status) {
-        this.status = status;
-    }
-
-
-    public Double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(Double temperature) {
-
-        this.temperature = temperature;
-    }
-
 }

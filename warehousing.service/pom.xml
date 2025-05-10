@@ -94,6 +94,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>8.0.1.Final</version> <!-- Or compatible with Spring Boot version -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

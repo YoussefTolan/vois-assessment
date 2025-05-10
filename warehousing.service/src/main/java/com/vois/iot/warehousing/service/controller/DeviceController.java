@@ -44,7 +44,7 @@ public class DeviceController {
             @RequestParam(defaultValue = "false") Boolean saleable,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Page<DeviceResponse> pagedDevices = saleable
+        Page<DeviceResponse> pagedDevices = Boolean.TRUE.equals(saleable)
                 ? service.listSaleable(PageRequest.of(page, size))
                 : service.listAll(PageRequest.of(page, size));
 
@@ -71,11 +71,5 @@ public class DeviceController {
         return ResponseEntity.ok(Collections.singletonMap("message", "Device deleted successfully"));
     }
 
-    // @GetMapping("/all")
-    // public ResponseEntity<List<DeviceResponse>> listAll() {
-    //     log.info("Listing all devices");
-    //     List<DeviceResponse> all = service.listAll();
-    //     return ResponseEntity.ok(all);
-    // }
 
 }

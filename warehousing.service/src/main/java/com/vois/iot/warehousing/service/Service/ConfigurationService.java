@@ -1,9 +1,9 @@
 package com.vois.iot.warehousing.service.Service;
 
+import com.vois.iot.warehousing.service.dto.DeviceRequest;
 import com.vois.iot.warehousing.service.model.Device;
 import com.vois.iot.warehousing.service.model.Enums.DeviceStatus;
 import com.vois.iot.warehousing.service.repository.DeviceRepository;
-
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
